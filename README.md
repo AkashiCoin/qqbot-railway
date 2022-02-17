@@ -1,4 +1,4 @@
-# Railway-docker-zhenxun
+# Railway-QQbot
 
 使用 railway 一键部署qqbot
 
