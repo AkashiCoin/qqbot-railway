@@ -10,10 +10,10 @@ RUN mkdir /run/sshd \
     && echo "nohup /ngrok tcp --authtoken ${NGROK_TOKEN} 22 &" >>/openssh.sh \
     && echo "sleep 5" >> /openssh.sh \
     && echo "curl -s http://localhost:4040/api/tunnels | python3 -c \"import sys, json; print(\\\"ssh连接命令:\\\n\\\",\\\"ssh\\\",\\\"root@\\\"+json.load(sys.stdin)['tunnels'][0]['public_url'][6:].replace(':', ' -p '),\\\"\\\nROOT默认密码:akashi520\\\")\" || echo \"\nError：请检查NGROK_TOKEN变量是否存在，或Ngrok节点已被占用\n\"" >> /openssh.sh \
-    && echo '/usr/sbin/sshd -D' >>/openssh.sh \
+    && echo '/usr/sbin/sshd -D' >>/openssh.sh \    
+    && echo 'dotnet QQBot.Web.dll' >> /openssh.sh \
     && echo 'PermitRootLogin yes' >>  /etc/ssh/sshd_config  \
     && echo root:akashi520|chpasswd \
     && chmod 755 /openssh.sh
 EXPOSE 5010
 ENTRYPOINT ["/bin/sh","-c","/openssh.sh"]
-ENTRYPOINT ["dotnet","QQBot.Web.dll"]
