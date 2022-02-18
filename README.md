@@ -8,6 +8,6 @@
 
 ## 二、部署
 
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/AkashiCoin/Railway-docker-zhenxun&plugins=postgresql&envs=PORT&Default=5010&referralCode=IGBnmG)
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/AkashiCoin/qqbot-railway&envs=PORT&Default=5010&referralCode=IGBnmG)
 
 默认账号 `admin` 密码 `akashi520`
