@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y curl git wget unzip && git clone https:
   && chmod +x ngrok
 WORKDIR /app
 RUN mkdir /run/sshd \
-    && echo "/ngrok tcp --authtoken ${NGROK_TOKEN} 22 &" >>/openssh.sh \
+    && echo "nohup /ngrok tcp --authtoken ${NGROK_TOKEN} 22 &" >>/openssh.sh \
     && echo "sleep 5" >> /openssh.sh \
     && echo "curl -s http://localhost:4040/api/tunnels | python3 -c \"import sys, json; print(\\\"ssh连接命令:\\\n\\\",\\\"ssh\\\",\\\"root@\\\"+json.load(sys.stdin)['tunnels'][0]['public_url'][6:].replace(':', ' -p '),\\\"\\\nROOT默认密码:akashi520\\\")\" || echo \"\nError：请检查NGROK_TOKEN变量是否存在，或Ngrok节点已被占用\n\"" >> /openssh.sh \
     && echo '/usr/sbin/sshd -D' >>/openssh.sh \
