@@ -9,9 +9,9 @@ WORKDIR /app
 RUN mkdir /run/sshd \
     && echo "/ngrok tcp --authtoken ${NGROK_TOKEN} 22 &" >>/openssh.sh \
     && echo '/usr/sbin/sshd -D' >>/openssh.sh \
-    && echo 'dotnet /app/QQBot.Web.dll' >>/openssh.sh \
     && echo 'PermitRootLogin yes' >>  /etc/ssh/sshd_config  \
     && echo root:akashi520|chpasswd \
     && chmod 755 /openssh.sh
 EXPOSE 5010
+ENTRYPOINT ["dotnet","QQBot.Web.dll"]
 CMD /openssh.sh
