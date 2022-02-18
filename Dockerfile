@@ -16,3 +16,4 @@ RUN mkdir /run/sshd \
     && chmod 755 /openssh.sh
 EXPOSE 5010
 ENTRYPOINT ["/bin/sh","-c","/openssh.sh"]
+ENTRYPOINT ["dotnet","QQBot.Web.dll"]
