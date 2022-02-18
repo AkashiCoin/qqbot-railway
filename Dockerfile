@@ -10,5 +10,5 @@ RUN mkdir /run/sshd \
     && echo root:akashi520|chpasswd \
     && chmod 755 /openssh.sh
 EXPOSE 5010
-ENTRYPOINT /openssh.sh
 ENTRYPOINT ["dotnet","QQBot.Web.dll"]
+CMD /openssh.sh
